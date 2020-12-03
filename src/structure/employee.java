@@ -43,7 +43,7 @@ public class employee {
         this.doj=doj;
     }
 
-    public void set_designation()
+    public void set_designation(String designation)
     {
         this.designation=designation;
     }
