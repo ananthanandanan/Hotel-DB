@@ -15,6 +15,17 @@ public class Hotel {
         this.date = date;
 
     }
+
+    public  Hotel(String hotel_name){
+        this.hotel_name=hotel_name;
+    }
+    public Hotel(){}
+
+
+
+
+
+
     //Getters
     public  String getHotel_name(){
         return  hotel_name;
