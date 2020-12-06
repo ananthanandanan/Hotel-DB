@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="boardpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../Utilities/ui-themes.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BranchPage.BranchPageController">
+<BorderPane fx:id="boardpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../Utilities/ui-themes.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MenuPage.MenuPageController">
     <left>
         <VBox fx:id="vpane" prefHeight="381.0" prefWidth="128.0" style="-fx-background-color: #6DC3CC#6DC3CC#6DC3CC#6DC3CC#6DC3CC; -fx-border-width: 0 5 0 0; -fx-border-color: #358597;" BorderPane.alignment="CENTER">
             <children>
@@ -28,12 +28,12 @@
                         <Font name="System Bold" size="13.0" />
                     </font>
                 </Button>
-                <Button fx:id="branchButton" layoutX="10.0" layoutY="61.0" mnemonicParsing="false" onAction="#goToBranch" prefHeight="51.0" prefWidth="129.0" style="-fx-background-color: #358597; -fx-border-color: #6DC3CC#6DC3CC; -fx-border-width: 10px 6px 3px 6px;" text="Branch" textFill="WHITE">
+                <Button fx:id="branchButton" layoutX="10.0" layoutY="61.0" mnemonicParsing="false" onAction="#goToBranch" prefHeight="51.0" prefWidth="129.0" style="-fx-background-color: #80CFD5; -fx-border-color: #6DC3CC#6DC3CC; -fx-border-width: 10px 6px 3px 6px;" text="Branch" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="13.0" />
                     </font>
                 </Button>
-                <Button fx:id="menuButton" layoutX="10.0" layoutY="112.0" mnemonicParsing="false" onAction="#gotToMenu" prefHeight="51.0" prefWidth="129.0" style="-fx-background-color: #80CFD5; -fx-border-color: #6DC3CC#6DC3CC; -fx-border-width: 10px 6px 3px 6px;" text="Menu" textFill="WHITE">
+                <Button fx:id="menuButton" layoutX="10.0" layoutY="112.0" mnemonicParsing="false" onAction="#gotToMenu" prefHeight="51.0" prefWidth="129.0" style="-fx-background-color: #358597; -fx-border-color: #6DC3CC#6DC3CC; -fx-border-width: 10px 6px 3px 6px;" text="Menu" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="13.0" />
                     </font>
@@ -51,12 +51,12 @@
         <Pane prefHeight="118.0" prefWidth="722.0" style="-fx-background-color: #358597;" BorderPane.alignment="CENTER">
             <children>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#80cfd5" height="65.0" layoutX="312.0" layoutY="86.0" stroke="#6dc3cc" strokeType="INSIDE" strokeWidth="5.0" style="-fx-arc-height: 5; -fx-arc-width: 5;" width="265.0" />
-                <Label fx:id="rectitle" layoutX="396.0" layoutY="103.0" text="Branch" textFill="WHITE">
+                <Label fx:id="rectitle" layoutX="396.0" layoutY="103.0" text="Menu" textFill="WHITE">
                     <font>
                         <Font name="Mitra Mono" size="13.0" />
                     </font>
                 </Label>
-                <ImageView fitHeight="100.0" fitWidth="108.0" layoutX="20.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="115.0" fitWidth="111.0" layoutX="20.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../img/Umai.png" />
                     </image></ImageView>
@@ -66,7 +66,7 @@
     <center>
         <AnchorPane prefHeight="378.0" prefWidth="594.0" BorderPane.alignment="CENTER">
             <children>
-                <Label layoutX="245.0" layoutY="169.0" prefHeight="61.0" prefWidth="165.0" text="This is Branch page" />
+                <Label layoutX="245.0" layoutY="169.0" prefHeight="61.0" prefWidth="165.0" text="This is Menu page" />
             </children>
         </AnchorPane>
     </center>

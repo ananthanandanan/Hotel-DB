@@ -1,4 +1,4 @@
-package BranchPage;
+package MenuPage;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class BranchPageController implements Initializable {
+public class MenuPageController implements Initializable {
     @FXML
     private BorderPane borderPane;
     @FXML
@@ -28,7 +28,6 @@ public class BranchPageController implements Initializable {
     private Button menuButton;
     @FXML
     private Button EmployeeButton;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
