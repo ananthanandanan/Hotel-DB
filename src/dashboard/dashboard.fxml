@@ -5,17 +5,20 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="boardpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="722.0" stylesheets="@themes.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.dashboardController">
+<BorderPane fx:id="boardpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../Utilities/ui-themes.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.dashboardController">
    <left>
       <VBox fx:id="vpane" prefHeight="381.0" prefWidth="128.0" style="-fx-background-color: #6DC3CC#6DC3CC#6DC3CC#6DC3CC#6DC3CC; -fx-border-width: 0 5 0 0; -fx-border-color: #358597;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="Hotebutton" mnemonicParsing="false" onAction="#goToHotel" prefHeight="51.0" prefWidth="129.0" style="-fx-background-color: #80CFD5; -fx-border-color: #6DC3CC#6DC3CC; -fx-border-width: 10px 6px 3px 6px;" text="HotelPage" textFill="WHITE">
+            <Region prefHeight="27.0" prefWidth="123.0" />
+            <Button fx:id="Hotebutton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToHotel" prefHeight="51.0" prefWidth="123.0" style="-fx-background-color: #80CFD5; -fx-border-color: #6DC3CC#6DC3CC; -fx-border-width: 10px 6px 3px 6px;" text="Hotel" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -47,17 +50,24 @@
    <top>
       <Pane prefHeight="118.0" prefWidth="722.0" style="-fx-background-color: #358597;" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#80cfd5" height="65.0" layoutX="264.0" layoutY="82.0" stroke="#6dc3cc" strokeType="INSIDE" strokeWidth="5.0" style="-fx-arc-height: 5; -fx-arc-width: 5;" width="265.0" />
-            <Label fx:id="rectitle" layoutX="348.0" layoutY="99.0" text="Dashboard" textFill="WHITE">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#80cfd5" height="65.0" layoutX="312.0" layoutY="86.0" stroke="#6dc3cc" strokeType="INSIDE" strokeWidth="5.0" style="-fx-arc-height: 5; -fx-arc-width: 5;" width="265.0" />
+            <Label fx:id="rectitle" layoutX="396.0" layoutY="103.0" text="Dashboard" textFill="WHITE">
                <font>
                   <Font name="Mitra Mono" size="13.0" />
                </font>
             </Label>
-            <ImageView fitHeight="110.0" fitWidth="126.0" layoutX="20.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="100.0" fitWidth="108.0" layoutX="20.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Umai.png" />
+                  <Image url="@../../img/Umai.png" />
                </image></ImageView>
          </children>
       </Pane>
    </top>
+   <center>
+      <AnchorPane prefHeight="378.0" prefWidth="594.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="245.0" layoutY="169.0" prefHeight="61.0" prefWidth="165.0" text="This is Dashboard page" />
+         </children>
+      </AnchorPane>
+   </center>
 </BorderPane>
