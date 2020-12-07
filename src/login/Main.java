@@ -11,9 +11,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource(Paths.DASHBOARDPAGEVIEW));
+        Parent root = FXMLLoader.load(getClass().getResource(Paths.LOGINPAGEVIEW ));
         primaryStage.setTitle("Hotel Management System");
-        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setScene(new Scene(root, 267, 374));
         primaryStage.show();
         primaryStage.setResizable(false);
     }

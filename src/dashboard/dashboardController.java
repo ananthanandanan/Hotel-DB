@@ -127,7 +127,7 @@ public class dashboardController implements Initializable {
         try {
             Parent root = FXMLLoader.load(getClass().getResource(Paths.EMPLOYEEPAGEVIEW));
             Stage window= (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            window.setTitle(" page");
+            window.setTitle(" Employee page");
             Scene scene = new Scene(root);
             window.setScene(scene);
             window.show();
