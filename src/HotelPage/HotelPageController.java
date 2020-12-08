@@ -56,7 +56,7 @@ public class HotelPageController implements Initializable {
         C4.setCellValueFactory(new PropertyValueFactory<Hotel, String>("date"));
 
 
-        final ObservableList<Hotel> hotellist = FXCollections.observableArrayList();
+         ObservableList<Hotel> hotellist = FXCollections.observableArrayList();
 
         try {
             Connection connection = DatabaseConnector.getConnnection();

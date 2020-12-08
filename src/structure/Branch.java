@@ -4,53 +4,63 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Branch extends Hotel {
 
-    private String branch_name;
-    private float expenditure;
-    private String city;
-    private String SSN;
+    SimpleStringProperty branch_name;
+    Float expenditure;
+    SimpleStringProperty city;
+    SimpleStringProperty SSN;
 
-    public Branch(String hotel_name, String branch_name, float expenditure, String city, String SSN)
+    public Branch(String hotel_name, String branch_name, Float expenditure, String city, String SSN)
     {
         super(hotel_name);
-        this.branch_name=branch_name;
+        this.branch_name= new SimpleStringProperty(branch_name);
         this.expenditure=expenditure;
-        this.city=city;
-        this.SSN=SSN;
+        this.city= new SimpleStringProperty(city);
+        this.SSN= new SimpleStringProperty(SSN);
     }
 
     public Branch(){}
 
-
-
-
-
-    //getters
-    public String get_branch_name() { return branch_name; }
-    public float get_expenditure() { return expenditure; }
-    public String get_city() { return city; }
-    public String get_ssn() { return SSN; }
-
-
-    //setters
-    public void set_branch_name(String branch_name)
-    {
-        this.branch_name=branch_name;
-    }
-    public void set_city(String city)
-    {
-        this.city=city;
-    }
-    public void set_ssn(String branch_name)
-    {
-        this.SSN=SSN;
-    }
-    public void set_expenditure(float expenditure)
-    {
-        this.expenditure=expenditure;
+    public String getBranch_name() {
+        return branch_name.get();
     }
 
+    public SimpleStringProperty branch_nameProperty() {
+        return branch_name;
+    }
 
+    public void setBranch_name(String branch_name) {
+        this.branch_name.set(branch_name);
+    }
 
+    public Float getExpenditure() {
+        return expenditure;
+    }
 
+    public void setExpenditure(Float expenditure) {
+        this.expenditure = expenditure;
+    }
 
+    public String getCity() {
+        return city.get();
+    }
+
+    public SimpleStringProperty cityProperty() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city.set(city);
+    }
+
+    public String getSSN() {
+        return SSN.get();
+    }
+
+    public SimpleStringProperty SSNProperty() {
+        return SSN;
+    }
+
+    public void setSSN(String SSN) {
+        this.SSN.set(SSN);
+    }
 }
