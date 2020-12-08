@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import java.net.URL;
@@ -159,6 +160,21 @@ public class dashboardController implements Initializable {
         catch (Exception ex) {
             System.out.println("Error load Checkin FXML !");
             System.out.println(ex.getMessage());
+            ex.printStackTrace();
+        }
+    }
+    @FXML
+    public void gotoLogin(MouseEvent actionEvent){
+        System.out.println("The mouse is clicked");
+        try{
+            Parent root=FXMLLoader.load(getClass().getResource(Paths.LOGINPAGEVIEW));
+            Stage window= (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            window.setTitle("Hotel Management System");
+            Scene scene=new Scene(root);
+            window.setScene(scene);
+            window.show();
+        }
+        catch(Exception ex){
             ex.printStackTrace();
         }
     }
