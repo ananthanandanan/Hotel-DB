@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -18,7 +19,8 @@ import javafx.stage.Stage;
 
 public class dashboardController implements Initializable {
 
-
+    @FXML
+    private Hyperlink backlabel;
     @FXML
     private BorderPane borderPane;
     @FXML
@@ -128,6 +130,26 @@ public class dashboardController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getResource(Paths.EMPLOYEEPAGEVIEW));
             Stage window= (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             window.setTitle(" Employee page");
+            Scene scene = new Scene(root);
+            window.setScene(scene);
+            window.show();
+
+            root.requestFocus();
+        }
+        catch (Exception ex) {
+            System.out.println("Error load Checkin FXML !");
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+        }
+    }
+
+    public void gotToHome(ActionEvent actionEvent) {
+        System.out.println("Home button clicked");
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(Paths.DASHBOARDPAGEVIEW));
+            Stage window= (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            window.setTitle("Home page");
             Scene scene = new Scene(root);
             window.setScene(scene);
             window.show();

@@ -43,7 +43,7 @@
                         <Font name="System Bold" size="13.0" />
                     </font>
                 </Button>
-                <Hyperlink text="Back" />
+                <Hyperlink fx:id="backlabel" onAction="#gotToHome" text="Back" />
             </children>
         </VBox>
     </left>
