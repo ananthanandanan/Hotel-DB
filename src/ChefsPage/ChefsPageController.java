@@ -1,19 +1,37 @@
 package ChefsPage;
 
+import database.DatabaseConnector;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import structure.Hotel;
+import structure.chef;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ChefsPageController implements Initializable {
 
+    @FXML
+    public TableView<chef> chefsTable;
+    @FXML
+    private TableColumn<chef, String> C1;
+    @FXML
+    private TableColumn<chef, Float> C2;
+    @FXML
+    private TableColumn<chef, String> C3;
+    @FXML
+    private TableColumn<chef, String> C4;
     @FXML
     private Hyperlink backlabel;
     @FXML
@@ -32,9 +50,42 @@ public class ChefsPageController implements Initializable {
     private Button menuButton;
     @FXML
     private Button EmployeeButton;
+    private PreparedStatement prep_stmt = null;
+    private ResultSet re = null;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        C1.setCellValueFactory(new PropertyValueFactory<chef, String>("SSN"));
+        C2.setCellValueFactory(new PropertyValueFactory<chef, Float>("cuisine_id"));
+        C3.setCellValueFactory(new PropertyValueFactory<chef, String>("name"));
+        C4.setCellValueFactory(new PropertyValueFactory<chef, String>("doj"));
+
+
+        ObservableList<chef> chefslist = FXCollections.observableArrayList();
+
+        try {
+            Connection connection = DatabaseConnector.getConnnection();
+            connection.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+            //get the data from db
+            prep_stmt = connection.prepareStatement("SELECT * FROM chefs");
+            re = prep_stmt.executeQuery();
+            while (re.next()){
+                chefslist.add(new chef(re.getString("SSN"), re.getString("Chef_name"), re.getString("DOJ"),
+                        re.getString("Cuisine_id")));
+            }
+            re.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
+        chefsTable.setItems(chefslist);
+
 
     }
     @FXML

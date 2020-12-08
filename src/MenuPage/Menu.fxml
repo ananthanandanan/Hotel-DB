@@ -3,9 +3,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.Region?>
@@ -64,11 +65,19 @@
             </children>
         </Pane>
     </top>
-    <center>
-        <AnchorPane prefHeight="378.0" prefWidth="594.0" BorderPane.alignment="CENTER">
-            <children>
-                <Label layoutX="245.0" layoutY="169.0" prefHeight="61.0" prefWidth="165.0" text="This is Menu page" />
-            </children>
-        </AnchorPane>
-    </center>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="menuTable" layoutX="1.0" layoutY="68.0" prefHeight="415.0" prefWidth="671.0">
+              <columns>
+                <TableColumn fx:id="C1" prefWidth="323.0" text="Food Item" />
+                <TableColumn fx:id="C2" prefWidth="345.0" text="Cuisine ID" />
+              </columns>
+            </TableView>
+            <Button layoutX="24.0" layoutY="37.0" mnemonicParsing="false" text="Button" />
+            <Button layoutX="102.0" layoutY="37.0" mnemonicParsing="false" text="Button" />
+            <Button layoutX="186.0" layoutY="37.0" mnemonicParsing="false" text="Button" />
+         </children>
+      </Pane>
+   </center>
 </BorderPane>
