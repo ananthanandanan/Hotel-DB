@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -13,6 +14,8 @@ import java.util.ResourceBundle;
 
 public class ChefsPageController implements Initializable {
 
+    @FXML
+    private Hyperlink backlabel;
     @FXML
     private BorderPane borderPane;
     @FXML
@@ -54,4 +57,9 @@ public class ChefsPageController implements Initializable {
     public void gotToEmployee(ActionEvent actionEvent) {
         new dashboard.dashboardController().gotToEmployee(actionEvent);
     }
+    @FXML
+    public void gotToHome(ActionEvent actionEvent) {
+        new dashboard.dashboardController().gotToHome(actionEvent);
+    }
+
 }
