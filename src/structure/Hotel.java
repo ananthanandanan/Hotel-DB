@@ -1,56 +1,70 @@
 package structure;
 
 
+import javafx.beans.property.SimpleStringProperty;
+
 public class Hotel {
 
-    String hotel_name ;
-    float revenue_planned;
-    String state;
-    String date;
+    SimpleStringProperty hotel_name ;
+    Float revenue_planned;
+    SimpleStringProperty state;
+    SimpleStringProperty date;
 
-    public  Hotel(String hotel_name, float revenue_planned, String state, String date){
-        this.hotel_name = hotel_name;
+    public  Hotel(String hotel_name, Float revenue_planned, String state, String date){
+        this.hotel_name = new SimpleStringProperty(hotel_name);
         this.revenue_planned = revenue_planned;
-        this.state = state;
-        this.date = date;
+        this.state =  new SimpleStringProperty(state);
+        this.date = new SimpleStringProperty(date);
 
     }
 
     public  Hotel(String hotel_name){
-        this.hotel_name=hotel_name;
+
+        this.hotel_name= new SimpleStringProperty(hotel_name);
     }
     public Hotel(){}
 
-
-
-
-
-
-    //Getters
-    public  String getHotel_name(){
-        return  hotel_name;
+    public String getHotel_name() {
+        return hotel_name.get();
     }
-    public  float getRevenue_planned(){
-        return  revenue_planned;
+
+    public SimpleStringProperty hotel_nameProperty() {
+        return hotel_name;
     }
-    public  String getState(){
-        return  state;
-    }
-    public  String getDate(){
-        return  date;
-    }
-    //Setters
+
     public void setHotel_name(String hotel_name) {
-        this.hotel_name = hotel_name;;
-    }
-    public void setRevenue_planned(float revenue_planned) {
-       this.revenue_planned = revenue_planned;
-    }
-    public void setState(String state) {
-        this.state = state;
-    }
-    public void setDate(String date) {
-        this.date = date;
+        this.hotel_name.set(hotel_name);
     }
 
+    public Float getRevenue_planned() {
+        return revenue_planned;
+    }
+
+    public void setRevenue_planned(Float revenue_planned) {
+        this.revenue_planned = revenue_planned;
+    }
+
+    public String getState() {
+        return state.get();
+    }
+
+    public SimpleStringProperty stateProperty() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state.set(state);
+    }
+
+    public String getDate() {
+        return date.get();
+    }
+
+    public SimpleStringProperty dateProperty() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date.set(date);
+    }
 }

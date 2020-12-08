@@ -8,8 +8,9 @@ public class DatabaseConnector {
     private static Connection connection;
     public static Connection getConnnection(){
         try {
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/HotelDB","root","");
-        } catch (SQLException e) {
+            Class.forName("org.postgresql.Driver");
+            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/HotelDB","postgres","postgres");
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

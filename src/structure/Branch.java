@@ -1,5 +1,7 @@
 package structure;
 
+import javafx.beans.property.SimpleStringProperty;
+
 public class Branch extends Hotel {
 
     private String branch_name;
@@ -7,7 +9,7 @@ public class Branch extends Hotel {
     private String city;
     private String SSN;
 
-    public Branch(String hotel_name,String branch_name,float expenditure,String city,String SSN)
+    public Branch(String hotel_name, String branch_name, float expenditure, String city, String SSN)
     {
         super(hotel_name);
         this.branch_name=branch_name;
