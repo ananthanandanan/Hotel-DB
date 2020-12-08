@@ -31,14 +31,12 @@ public class loginController extends AlertBoxController implements Initializable
         if(validate()) {
             try {
                 Parent root=FXMLLoader.load(getClass().getResource(Paths.DASHBOARDPAGEVIEW));
+                Stage window = (Stage) ((Node) Event.getSource()).getScene().getWindow();
                 Scene scene=new Scene(root);
-                Stage window= (Stage) ((Node) Event.getSource()).getScene().getWindow();
                 window.setScene(scene);
-                window.setHeight(600);
-                window.setWidth(800);
-
                 window.setTitle("Welcome");
                 window.show();
+                root.requestFocus();
 
             } catch (Exception e) {
                 e.printStackTrace();
