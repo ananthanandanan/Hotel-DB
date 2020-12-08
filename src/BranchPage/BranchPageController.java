@@ -91,23 +91,23 @@ public class BranchPageController implements Initializable {
     }
     @FXML
     public void goToHotel(ActionEvent actionEvent) {
-        new dashboard.dashboardController().goToHotel(actionEvent);
+        new HotelPage.HotelPageController().goToHotel(actionEvent);
     }
     @FXML
     public void goToChefs(ActionEvent actionEvent) {
-        new dashboard.dashboardController().goToChefs(actionEvent);
+        new HotelPage.HotelPageController().goToChefs(actionEvent);
     }
     @FXML
     public void goToBranch(ActionEvent actionEvent) {
-        new dashboard.dashboardController().goToBranch(actionEvent);
+        new HotelPage.HotelPageController().goToBranch(actionEvent);
     }
     @FXML
     public void gotToMenu(ActionEvent actionEvent) {
-        new dashboard.dashboardController().gotToMenu(actionEvent);
+        new HotelPage.HotelPageController().gotToMenu(actionEvent);
     }
     @FXML
     public void gotToEmployee(ActionEvent actionEvent) {
-        new dashboard.dashboardController().gotToEmployee(actionEvent);
+        new HotelPage.HotelPageController().gotToEmployee(actionEvent);
     }
     @FXML
     public void gotToHome(ActionEvent actionEvent) {

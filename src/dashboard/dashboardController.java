@@ -8,8 +8,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -21,37 +21,35 @@ import javafx.stage.Stage;
 public class dashboardController implements Initializable {
 
     @FXML
-    private Hyperlink backlabel;
+    private ImageView Logoutbutton;
     @FXML
-    private BorderPane borderPane;
-    @FXML
-    private VBox vbox;
+    private BorderPane boardpane;
     @FXML
     private Label rectitle;
     @FXML
-    private Button Hotebutton;
+    private ImageView branchButton;
     @FXML
-    private Button chefButton;
+    private ImageView Hotebutton;
     @FXML
-    private Button branchButton;
+    private ImageView EmployeeButton;
     @FXML
-    private Button menuButton;
+    private ImageView chefButton;
     @FXML
-    private Button EmployeeButton;
+    private ImageView menuButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
     @FXML
-    public void goToHotel(ActionEvent actionEvent) {
+    public void goToHotel(MouseEvent actionEvent) {
         System.out.println("Check in button clicked");
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource(Paths.HOTELPAGEVIEW));
             Stage window= (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             window.setTitle("Hotel page");
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root,800,600);
             window.setScene(scene);
             window.show();
 
@@ -64,7 +62,7 @@ public class dashboardController implements Initializable {
         }
     }
     @FXML
-    public void goToChefs(ActionEvent actionEvent) {
+    public void goToChefs(MouseEvent actionEvent) {
         System.out.println("Check in button clicked");
 
         try {
@@ -84,7 +82,7 @@ public class dashboardController implements Initializable {
         }
     }
     @FXML
-    public void goToBranch(ActionEvent actionEvent) {
+    public void goToBranch(MouseEvent actionEvent) {
         System.out.println("Check in button clicked");
 
         try {
@@ -104,7 +102,7 @@ public class dashboardController implements Initializable {
         }
     }
     @FXML
-    public void gotToMenu(ActionEvent actionEvent) {
+    public void gotToMenu(MouseEvent actionEvent) {
         System.out.println("Check in button clicked");
 
         try {
@@ -124,13 +122,13 @@ public class dashboardController implements Initializable {
         }
     }
     @FXML
-    public void gotToEmployee(ActionEvent actionEvent) {
+    public void gotToEmployee(MouseEvent actionEvent) {
         System.out.println("Check in button clicked");
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource(Paths.EMPLOYEEPAGEVIEW));
             Stage window= (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            window.setTitle(" Employee page");
+            window.setTitle(" page");
             Scene scene = new Scene(root);
             window.setScene(scene);
             window.show();
