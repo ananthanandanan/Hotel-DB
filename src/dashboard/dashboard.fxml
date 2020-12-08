@@ -1,74 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="boardpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../Utilities/ui-themes.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.dashboardController">
-   <left>
-      <VBox fx:id="vpane" prefHeight="381.0" prefWidth="128.0" style="-fx-background-color: #6DC3CC#6DC3CC#6DC3CC#6DC3CC#6DC3CC; -fx-border-width: 0 5 0 0; -fx-border-color: #358597;" BorderPane.alignment="CENTER">
-         <children>
-            <Region prefHeight="27.0" prefWidth="123.0" />
-            <Button fx:id="Hotebutton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToHotel" prefHeight="51.0" prefWidth="123.0" style="-fx-background-color: #80CFD5; -fx-border-color: #6DC3CC#6DC3CC; -fx-border-width: 10px 6px 3px 6px;" text="Hotel" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Button>
-            <Button fx:id="chefButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#goToChefs" prefHeight="51.0" prefWidth="129.0" style="-fx-background-color: #80CFD5; -fx-border-color: #6DC3CC#6DC3CC; -fx-border-width: 10px 6px 3px 6px;" text="Chefs" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Button>
-            <Button fx:id="branchButton" layoutX="10.0" layoutY="61.0" mnemonicParsing="false" onAction="#goToBranch" prefHeight="51.0" prefWidth="129.0" style="-fx-background-color: #80CFD5; -fx-border-color: #6DC3CC#6DC3CC; -fx-border-width: 10px 6px 3px 6px;" text="Branch" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Button>
-            <Button fx:id="menuButton" layoutX="10.0" layoutY="112.0" mnemonicParsing="false" onAction="#gotToMenu" prefHeight="51.0" prefWidth="129.0" style="-fx-background-color: #80CFD5; -fx-border-color: #6DC3CC#6DC3CC; -fx-border-width: 10px 6px 3px 6px;" text="Menu" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Button>
-            <Button fx:id="EmployeeButton" layoutX="10.0" layoutY="163.0" mnemonicParsing="false" onAction="#gotToEmployee" prefHeight="51.0" prefWidth="123.0" style="-fx-background-color: #80CFD5; -fx-border-color: #6DC3CC#6DC3CC; -fx-border-width: 10px 6px 3px 6px;" text="Employee" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Button>
-            <Hyperlink fx:id="backlabel" onAction="#gotToHome" text="Back" />
-         </children>
-      </VBox>
-   </left>
    <top>
       <Pane prefHeight="118.0" prefWidth="722.0" style="-fx-background-color: #358597;" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#80cfd5" height="65.0" layoutX="312.0" layoutY="86.0" stroke="#6dc3cc" strokeType="INSIDE" strokeWidth="5.0" style="-fx-arc-height: 5; -fx-arc-width: 5;" width="265.0" />
-            <Label fx:id="rectitle" layoutX="396.0" layoutY="103.0" text="Dashboard" textFill="WHITE">
-               <font>
-                  <Font name="Mitra Mono" size="13.0" />
-               </font>
-            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#80cfd5" height="65.0" layoutX="249.0" layoutY="28.0" stroke="#6dc3cc" strokeType="INSIDE" strokeWidth="5.0" style="-fx-arc-height: 5; -fx-arc-width: 5;" width="265.0" />
             <ImageView fitHeight="116.0" fitWidth="168.0" layoutX="5.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/Umai.png" />
                </image>
             </ImageView>
+            <Label fx:id="rectitle" layoutX="333.0" layoutY="45.0" text="Dashboard" textFill="WHITE">
+               <font>
+                  <Font name="Mitra Mono" size="13.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </top>
    <center>
-      <AnchorPane prefHeight="378.0" prefWidth="594.0" BorderPane.alignment="CENTER">
+      <GridPane style="-fx-background-color: #6DC3CC#6DC3CC;" BorderPane.alignment="CENTER">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints percentHeight="50.0" />
+            <RowConstraints minHeight="10.0" percentHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
-            <Label layoutX="245.0" layoutY="169.0" prefHeight="61.0" prefWidth="165.0" text="This is Dashboard page" />
+            <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #6DC3CC#6DC3CC;">
+               <children>
+                  <Button layoutX="38.0" layoutY="27.0" mnemonicParsing="false" prefHeight="188.0" prefWidth="188.0" style="-fx-background-color: #80CFD5;" />
+                  <ImageView fitHeight="188.0" fitWidth="188.0" layoutX="38.0" layoutY="27.0" onMouseClicked="#goToHotel" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Pane>
+            <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #6DC3CC#6DC3CC;" GridPane.columnIndex="1">
+               <children>
+                  <Button layoutX="38.0" layoutY="27.0" mnemonicParsing="false" prefHeight="188.0" prefWidth="188.0" style="-fx-background-color: #80CFD5;" />
+                  <ImageView fx:id="branchButton" fitHeight="188.0" fitWidth="188.0" layoutX="38.0" layoutY="27.0" onMouseClicked="#goToBranch" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/JavaBranch.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="274.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #6DC3CC#6DC3CC;">
+               <children>
+                  <Button layoutX="38.0" layoutY="27.0" mnemonicParsing="false" prefHeight="188.0" prefWidth="188.0" style="-fx-background-color: #80CFD5;" />
+                  <ImageView fx:id="Hotebutton" fitHeight="188.0" fitWidth="188.0" layoutX="38.0" layoutY="27.0" onMouseClicked="#goToHotel" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/JavaHotel.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="274.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #6DC3CC#6DC3CC;" GridPane.columnIndex="2">
+               <children>
+                  <Button layoutX="38.0" layoutY="27.0" mnemonicParsing="false" prefHeight="188.0" prefWidth="188.0" style="-fx-background-color: #80CFD5;" />
+                  <ImageView fx:id="EmployeeButton" fitHeight="188.0" fitWidth="188.0" layoutX="38.0" layoutY="27.0" onMouseClicked="#gotToEmployee" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/JavaEmployee.png" />
+                     </image></ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="538.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #6DC3CC#6DC3CC;" GridPane.rowIndex="1">
+               <children>
+                  <Button layoutX="38.0" layoutY="27.0" mnemonicParsing="false" prefHeight="188.0" prefWidth="188.0" style="-fx-background-color: #80CFD5;" />
+                  <ImageView fx:id="chefButton" fitHeight="188.0" fitWidth="188.0" layoutX="38.0" layoutY="27.0" onMouseClicked="#goToChefs" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/JavaChefs.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="10.0" layoutY="251.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #6DC3CC#6DC3CC;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Button layoutX="38.0" layoutY="27.0" mnemonicParsing="false" prefHeight="188.0" prefWidth="188.0" style="-fx-background-color: #80CFD5;" />
+                  <ImageView fx:id="menuButton" fitHeight="180.0" fitWidth="183.0" layoutX="42.0" layoutY="35.0" onMouseClicked="#gotToMenu" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/JavaMenupng.png" />
+                     </image></ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #6DC3CC#6DC3CC;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <children>
+                  <Button layoutX="38.0" layoutY="27.0" mnemonicParsing="false" prefHeight="188.0" prefWidth="188.0" style="-fx-background-color: #80CFD5;" />
+                  <ImageView fx:id="Logoutbutton" fitHeight="188.0" fitWidth="188.0" layoutX="38.0" layoutY="27.0" onMouseClicked="#gotoLogin" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/Javalogout.png" />
+                     </image></ImageView>
+               </children>
+            </Pane>
          </children>
-      </AnchorPane>
+      </GridPane>
    </center>
 </BorderPane>

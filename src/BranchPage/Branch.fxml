@@ -73,7 +73,7 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="branchTable" layoutX="-2.0" layoutY="69.0" prefHeight="415.0" prefWidth="676.0">
+            <TableView fx:id="branchTable" layoutY="69.0" prefHeight="415.0" prefWidth="674.0">
               <columns>
                 <TableColumn fx:id="C1" prefWidth="163.0" text="Hotel Name" />
                 <TableColumn fx:id="C2" prefWidth="141.0" text="Branch Name" />
