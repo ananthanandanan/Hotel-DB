@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import structure.Branch;
@@ -49,6 +51,8 @@ public class BranchPageController implements Initializable {
     private Button menuButton;
     @FXML
     private Button EmployeeButton;
+    @FXML
+    private ImageView logmini;
     private PreparedStatement prep_stmt = null;
     private ResultSet re = null;
 
@@ -109,5 +113,7 @@ public class BranchPageController implements Initializable {
     public void gotToHome(ActionEvent actionEvent) {
         new dashboard.dashboardController().gotToHome(actionEvent);
     }
+    @FXML
+    public void gotoLogin(MouseEvent actionEvent){new dashboard.dashboardController().gotoLogin(actionEvent);}
 
 }

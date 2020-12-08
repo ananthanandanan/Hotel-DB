@@ -28,6 +28,13 @@ create table Menu(
 	Food_Item  varchar(100),
 	Cuisine_id varchar(100) references Cuisine(Cuisine_id));
 
+create table Employee(
+	SSID varchar(100) PRIMARY KEY,
+	ename varchar(100),
+	DOJ varchar(100),
+	designation varchar(100)
+);
+
 insert into Hotel values
 ('RonHotel',500000.00,'Kerala','23-12-2000'),
 ('AnandHotel',400000.00,'Karnataka','12-02-2001'),
@@ -64,6 +71,13 @@ insert into Menu values
 ('FoodD','F102'),
 ('FoodE','F101'),
 ('FoodA','F104');
+
+insert into Employee values
+('S101','Ron','20-11-2020','Janitor'),
+('S102','Anand','15-11-2018', 'GM'),
+('S103','Ananthan','11-11-1998', 'MD'),
+('S100','Ashish','12-10-2017', 'Disposal-Man'),
+('S105','Ashwin','12-7-2004', 'Waiter');
 
 select Hotel.Hotel_name,sum(Expenditure) 
 from Hotel inner join branch 
