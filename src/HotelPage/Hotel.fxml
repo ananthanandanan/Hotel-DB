@@ -83,7 +83,8 @@
             </TableView>
             <Button layoutX="24.0" layoutY="37.0" mnemonicParsing="false" onAction="#Adddata" text="Add" />
             <Button layoutX="102.0" layoutY="37.0" mnemonicParsing="false" onAction="#Editcol" text="Edit" />
-            <Button layoutX="186.0" layoutY="37.0" mnemonicParsing="false" text="Delete" />
+            <Button layoutX="186.0" layoutY="37.0" mnemonicParsing="false" onAction="#Deldata" text="Delete" />
+             <Label fx:id="invalidLabel" layoutX="277.0" layoutY="42.0" prefHeight="17.0" prefWidth="194.0" />
          </children>
       </Pane>
    </center>
