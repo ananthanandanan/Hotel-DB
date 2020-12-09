@@ -14,6 +14,8 @@ public class Paths {
     public static String EDITCHEFSVIEW = "/ChefsPage/addChefs.fxml";
     public static String INSERTEMPLOYEEVIEW = "/EmployeePage/insertEmployee.fxml";
     public static String EDITEMPLOYEEVIEW = "/EmployeePage/addEmpoyee.fxml";
+    public static String INSERTHOTELVIEW = "/HotelPage/insertHotel.fxml";
+    public static String EDITHOTELVIEW = "/HotelPage/addHotel.fxml";
 
 
 

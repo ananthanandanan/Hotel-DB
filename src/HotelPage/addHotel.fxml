@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="523.0" prefWidth="513.0" style="-fx-background-color: #358597;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HotelPage.addHotelController">
+    <children>
+        <Pane layoutX="137.0" layoutY="21.0" prefHeight="65.0" prefWidth="240.0" style="-fx-background-color: #80CFD5; -fx-border-color: white; -fx-border-width: 2px;">
+            <children>
+                <Label layoutX="63.0" layoutY="15.0" prefHeight="36.0" prefWidth="144.0" text="Edit Hotel" textFill="WHITE">
+                    <font>
+                        <Font name="Chilanka Regular" size="20.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <TextField fx:id="nameField" layoutX="171.0" layoutY="135.0" prefHeight="36.0" prefWidth="284.0" />
+        <TextField fx:id="revenueField" layoutX="171.0" layoutY="204.0" prefHeight="36.0" prefWidth="284.0" />
+        <TextField fx:id="stateField" layoutX="171.0" layoutY="273.0" prefHeight="36.0" prefWidth="284.0" />
+        <TextField fx:id="dateField" layoutX="171.0" layoutY="346.0" prefHeight="36.0" prefWidth="284.0" />
+        <Label layoutX="58.0" layoutY="135.0" text="Name" textFill="WHITE">
+            <font>
+                <Font name="Chilanka Regular" size="17.0" />
+            </font>
+        </Label>
+        <Label layoutX="51.0" layoutY="204.0" text="Revenue" textFill="WHITE">
+            <font>
+                <Font name="Chilanka Regular" size="17.0" />
+            </font>
+        </Label>
+        <Label layoutX="53.0" layoutY="273.0" text="State" textFill="WHITE">
+            <font>
+                <Font name="Chilanka Regular" size="17.0" />
+            </font>
+        </Label>
+        <Label layoutX="47.0" layoutY="346.0" text="Date" textFill="WHITE">
+            <font>
+                <Font name="Chilanka Regular" size="17.0" />
+            </font>
+        </Label>
+        <Button layoutX="281.0" layoutY="446.0" mnemonicParsing="false" onAction="#save" text="Save" />
+    </children>
+</AnchorPane>
