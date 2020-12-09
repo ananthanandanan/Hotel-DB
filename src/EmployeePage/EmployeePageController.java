@@ -97,6 +97,7 @@ public class EmployeePageController implements Initializable {
 
 
         employeeTable.setItems(employeelist);
+        employeeTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
 
     }
