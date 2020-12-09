@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import structure.Branch;
 import structure.Hotel;
@@ -27,6 +28,8 @@ import java.util.ResourceBundle;
 
 public class BranchPageController implements Initializable {
 
+    @FXML
+    private Label invalidLabel;
     @FXML
     private TableView<Branch> branchTable;
     @FXML
@@ -65,8 +68,10 @@ public class BranchPageController implements Initializable {
     private  Branch branch;
 
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        invalidLabel.setText("");
         C1.setCellValueFactory(new PropertyValueFactory<Branch, String>("hotel_name"));
         C2.setCellValueFactory(new PropertyValueFactory<Branch, String>("branch_name"));
         C3.setCellValueFactory(new PropertyValueFactory<Branch, Float>("expenditure"));
@@ -170,5 +175,36 @@ public class BranchPageController implements Initializable {
             ex.printStackTrace();
         }
     }
+
+    @FXML
+    public void delcol(ActionEvent actionevent)
+    {
+        try{
+            Connection connection = DatabaseConnector.getConnnection();
+            connection.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+            Branch branch = branchTable.getSelectionModel().getSelectedItem();
+            prep_stmt=connection.prepareStatement("Delete from Branch where Branch_name=? and Hotel_name=?");
+            prep_stmt.setString(1, branch.getBranch_name());
+            prep_stmt.setString(2,branch.getHotel_name());
+            int i= prep_stmt.executeUpdate();
+            connection.commit();
+            System.out.println(i+" records affected");
+            connection.close();
+            invalidLabel.setText("Deletion successful!");
+            invalidLabel.setTextFill(Color.GREEN);
+
+    }
+
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+
 
 }

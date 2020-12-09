@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import structure.chef;
 import structure.employee;
@@ -32,6 +33,8 @@ import java.util.ResourceBundle;
 public class EmployeePageController implements Initializable {
 
     public TableView<employee> employeeTable;
+    @FXML
+    private Label invalidLabel;
     @FXML
     private TableColumn<employee, String> C1;
     @FXML
@@ -65,6 +68,7 @@ public class EmployeePageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        invalidLabel.setText("");
         C1.setCellValueFactory(new PropertyValueFactory<employee, String>("SSN"));
         C2.setCellValueFactory(new PropertyValueFactory<employee, String>("name"));
         C3.setCellValueFactory(new PropertyValueFactory<employee, String>("doj"));
@@ -168,5 +172,27 @@ public class EmployeePageController implements Initializable {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
         }
+    }
+
+    @FXML
+    public void delcol(ActionEvent actionevent)
+    {
+        try {
+            Connection connection = DatabaseConnector.getConnnection();
+            connection.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+            employee e1 = employeeTable.getSelectionModel().getSelectedItem();
+            prep_stmt = connection.prepareStatement("Delete from employee where SSID=?");
+            prep_stmt.setString(1, e1.getSSN());
+            prep_stmt.executeUpdate();
+            connection.commit();
+            connection.close();
+            invalidLabel.setText("Deletion successful");
+            invalidLabel.setTextFill(Color.GREEN);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+
+    }
     }
 }
