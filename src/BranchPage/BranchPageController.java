@@ -1,17 +1,23 @@
 package BranchPage;
 
+import Transports.Paths;
 import database.DatabaseConnector;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import structure.Branch;
 import structure.Hotel;
 
@@ -55,6 +61,8 @@ public class BranchPageController implements Initializable {
     private ImageView logmini;
     private PreparedStatement prep_stmt = null;
     private ResultSet re = null;
+    private  ObservableList<Branch> branchlist = FXCollections.observableArrayList();
+    private  Branch branch;
 
 
     @Override
@@ -65,7 +73,6 @@ public class BranchPageController implements Initializable {
         C4.setCellValueFactory(new PropertyValueFactory<Branch, String>("city"));
         C5.setCellValueFactory(new PropertyValueFactory<Branch, String>("SSN"));
 
-         ObservableList<Branch> branchlist = FXCollections.observableArrayList();
 
         try {
             Connection connection = DatabaseConnector.getConnnection();
@@ -86,6 +93,7 @@ public class BranchPageController implements Initializable {
         }
 
         branchTable.setItems(branchlist);
+        branchTable.setEditable(true);
 
 
     }
@@ -116,4 +124,50 @@ public class BranchPageController implements Initializable {
     @FXML
     public void gotoLogin(MouseEvent actionEvent){new dashboard.dashboardController().gotoLogin(actionEvent);}
 
+    public void Editcol(ActionEvent actionEvent) {
+        try {
+            branch = branchTable.getSelectionModel().getSelectedItem();
+            System.out.println(branch.getBranch_name());
+            FXMLLoader loader = new FXMLLoader ();
+            loader.setLocation(getClass().getResource(Paths.EDITBRANCHVIEW));
+            Parent root = loader.load();
+            Scene scene = new Scene(root,513, 544);
+            addBranchController abc = loader.getController();
+            abc.setTextField(branchTable.getSelectionModel().getSelectedItem());
+
+            Stage window= new Stage();
+            window.setTitle("branch page");
+            window.setScene(scene);
+            window.setResizable(false);
+            window.show();
+            root.requestFocus();
+        }
+        catch (Exception ex) {
+            System.out.println("Error load Checkin FXML !");
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+        }
+    }
+
+    public void Adddata(ActionEvent actionEvent) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader ();
+            loader.setLocation(getClass().getResource(Paths.INSERTBRANCHVIEW));
+            Parent root = loader.load();
+            Scene scene = new Scene(root,513, 544);
+            insertBranchController abc = loader.getController();
+            Stage window= new Stage();
+            window.setTitle("branch page");
+            window.setScene(scene);
+            window.setResizable(false);
+            window.show();
+            root.requestFocus();
+        }
+        catch (Exception ex) {
+            System.out.println("Error load Checkin FXML !");
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+        }
+    }
 }
