@@ -1,7 +1,7 @@
-# Hotel Management System
+# Umai
 
-This is a vanilla java based gui application with postgresql as the database system. The application has desirable 
-user-experience with all the mandatory functionalities like Add, Edit and Delete. This is binded using postgressql. The UI 
+Umai is a hotel management system build using java with postgresql as the database system. The application has desirable 
+user-experience with all the mandatory functionalities like Add, Edit and Delete. This is binded using postgresql. The UI 
 is designed using JavaFX-FXML.
 
 ## Tech Stack
