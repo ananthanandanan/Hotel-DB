@@ -21,6 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import structure.chef;
+import structure.employee;
 import structure.menu;
 
 import java.net.URL;
@@ -61,6 +62,7 @@ public class MenuPageController implements Initializable {
     private ImageView logmini;
     private PreparedStatement prep_stmt = null;
     private ResultSet re = null;
+    ObservableList<menu> menulist = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -69,7 +71,6 @@ public class MenuPageController implements Initializable {
         C1.setCellValueFactory(new PropertyValueFactory<menu, String>("food_item"));
         C2.setCellValueFactory(new PropertyValueFactory<menu, Float>("cuisine_id"));
 
-        ObservableList<menu> menulist = FXCollections.observableArrayList();
 
         try {
             Connection connection = DatabaseConnector.getConnnection();
@@ -122,6 +123,35 @@ public class MenuPageController implements Initializable {
     public void gotoLogin(MouseEvent actionEvent){
         new dashboard.dashboardController().gotoLogin(actionEvent);
     }
+
+    @FXML
+    private void MenurefreshTable(ActionEvent actionEvent){
+
+        try {
+            menulist.clear();
+            Connection connection = DatabaseConnector.getConnnection();
+            connection.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+            //get the data from db
+            prep_stmt = connection.prepareStatement("SELECT * FROM Menu");
+            re = prep_stmt.executeQuery();
+            while (re.next()){
+                menulist.add(new menu(re.getString("Food_Item"), re.getString("Cuisine_id")));
+            }
+            re.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
+        menuTable.setItems(menulist);
+
+    }
+
+
     public void Editcol(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader ();

@@ -85,6 +85,7 @@
             <Button layoutX="102.0" layoutY="37.0" mnemonicParsing="false" onAction="#Editcol" text="Edit" />
             <Button layoutX="186.0" layoutY="37.0" mnemonicParsing="false" onAction="#delcol" text="Delete" />
              <Label fx:id="invalidLabel" layoutX="277.0" layoutY="42.0" prefHeight="17.0" prefWidth="194.0" />
+            <Button layoutX="577.0" layoutY="38.0" mnemonicParsing="false" onAction="#EmployeerefreshTable" text="Refresh" />
          </children>
       </Pane>
    </center>
