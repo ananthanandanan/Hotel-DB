@@ -10,6 +10,10 @@ public class Paths {
     public static String MENUPAGEVIEW = "/MenuPage/Menu.fxml";
     public static String EDITBRANCHVIEW = "/BranchPage/addBranch.fxml";
     public static String INSERTBRANCHVIEW = "/BranchPage/insertBranch.fxml";
+    public static String INSERTCHEFSVIEW = "/ChefsPage/insertChefs.fxml";
+    public static String EDITCHEFSVIEW = "/ChefsPage/addChefs.fxml";
+
+
 
 
 

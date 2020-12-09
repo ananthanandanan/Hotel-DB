@@ -3,9 +3,11 @@ package BranchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
- import structure.Branch;
+import javafx.stage.Stage;
+import structure.Branch;
  import database.DatabaseConnector;
 import java.net.URL;
 import java.sql.*;
@@ -58,6 +60,8 @@ public class addBranchController  implements Initializable {
         else {
             UpdateQuery();
             clean();
+            Stage window= (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            window.close();
 
         }
 

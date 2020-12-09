@@ -1,4 +1,4 @@
-package BranchPage;
+package ChefsPage;
 
 import database.DatabaseConnector;
 import javafx.event.ActionEvent;
@@ -8,81 +8,91 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import structure.Branch;
+import structure.chef;
 
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
-public class insertBranchController implements Initializable {
-
-    @FXML
-    private TextField hotelnameField;
-    @FXML
-    private TextField branchnameField;
-    @FXML
-    private TextField expenditureField;
-    @FXML
-    private TextField cityField;
+public class addChefsController implements Initializable {
     @FXML
     private TextField ssnfield;
+    @FXML
+    private TextField cuisineField;
+    @FXML
+    private TextField nameField;
+    @FXML
+    private TextField dojField;
     private PreparedStatement prep_stmt = null;
-    private ResultSet re = null;
-    private Branch editBranch;
+    private chef editchefs;
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+
     }
+
+    public void setTextField(chef chefs){
+        editchefs = chefs;
+        cuisineField.setText(editchefs.getCuisine_id());
+        nameField.setText(editchefs.getName());
+        dojField.setText(editchefs.getDoj());
+        ssnfield.setText(editchefs.getSSN());
+    }
+
     public void save(ActionEvent actionEvent) {
         //open connection
-        String hname = hotelnameField.getText();
-        String bname = branchnameField.getText();
-        Float exp = Float.parseFloat(expenditureField.getText());
-        String city = cityField.getText();
+
+        String name = nameField.getText();
+        String cuisineID = cuisineField.getText();
+        String doj = cuisineField.getText();
         String ssn = ssnfield.getText();
 
-        if(hname.isEmpty() || bname.isEmpty() || exp.isNaN() || city.isEmpty() || ssn.isEmpty()){
+        if(name.isEmpty() || cuisineID.isEmpty() || doj.isEmpty() ||  ssn.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setContentText("Please Fill All DATA");
             alert.showAndWait();
         }
         else {
-            AddQuery();
+            UpdateQuery();
             clean();
             Stage window= (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             window.close();
 
         }
 
-
     }
     @FXML
     private void clean() {
-        hotelnameField.setText(null);
-        branchnameField.setText(null);
-        expenditureField.setText(null);
-        cityField.setText(null);
+        cuisineField.setText(null);
+        nameField.setText(null);
+        dojField.setText(null);
         ssnfield.setText(null);
     }
 
-    private  void AddQuery(){
+
+    private  void UpdateQuery(){
         try{
             Class.forName("org.postgresql.Driver");
             Connection connection = DatabaseConnector.getConnnection();
             connection.setAutoCommit(false);
             System.out.println("Opened database successfully");
-            prep_stmt = connection.prepareStatement( "INSERT INTO  Branch VALUES(?,?,?,?,?)");
-            prep_stmt.setString(1, hotelnameField.getText());
-            prep_stmt.setString(2, branchnameField.getText());
-            prep_stmt.setFloat(3, Float.parseFloat(expenditureField.getText()));
-            prep_stmt.setString(4, cityField.getText());
-            prep_stmt.setString(5, ssnfield.getText());
+            prep_stmt = connection.prepareStatement( "UPDATE chefs SET "
+                    +" Cuisine_id=?,"
+                    +" DOJ=?,"
+                    +" Chef_name=?"
+                    +" WHERE SSN=?");
+            prep_stmt.setString(1, cuisineField.getText());
+            prep_stmt.setString(2, dojField.getText());
+            prep_stmt.setString(3,nameField.getText());
+            prep_stmt.setString(4, ssnfield.getText());
             int i = prep_stmt.executeUpdate();
-            System.out.println(i+" records affected");
             connection.commit();
+            System.out.println(i+" records affected");
             connection.close();
 
         }
@@ -91,4 +101,5 @@ public class insertBranchController implements Initializable {
         }
 
     }
+
 }
