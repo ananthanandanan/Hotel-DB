@@ -62,6 +62,8 @@ public class HotelPageController implements Initializable {
     private PreparedStatement prep_stmt = null;
     private ResultSet re = null;
 
+    ObservableList<Hotel> hotellist = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         invalidLabel.setText("");
@@ -71,8 +73,6 @@ public class HotelPageController implements Initializable {
         C3.setCellValueFactory(new PropertyValueFactory<Hotel, String>("state"));
         C4.setCellValueFactory(new PropertyValueFactory<Hotel, String>("date"));
 
-
-         ObservableList<Hotel> hotellist = FXCollections.observableArrayList();
 
         try {
             Connection connection = DatabaseConnector.getConnnection();
@@ -204,6 +204,33 @@ public class HotelPageController implements Initializable {
     @FXML
     public void gotoLogin(MouseEvent actionEvent){
         new dashboard.dashboardController().gotoLogin(actionEvent);
+    }
+    @FXML
+    private void HotelrefreshTable(ActionEvent actionEvent){
+
+        try {
+            hotellist.clear();
+            Connection connection = DatabaseConnector.getConnnection();
+            connection.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+            //get the data from db
+            prep_stmt = connection.prepareStatement("SELECT * FROM Hotel");
+            re = prep_stmt.executeQuery();
+            while (re.next()){
+                hotellist.add(new Hotel(re.getString("Hotel_name"),re.getFloat("Revenue_planned"), re.getString("State"),
+                        re.getString("Start_date")));
+            }
+            re.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
+        hotelTable.setItems(hotellist);
+
     }
 
     public void Editcol(ActionEvent actionEvent) {
