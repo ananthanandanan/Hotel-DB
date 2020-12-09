@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import structure.chef;
 import structure.menu;
@@ -32,6 +33,8 @@ import java.util.ResourceBundle;
 public class MenuPageController implements Initializable {
 
     public TableView<menu> menuTable;
+    @FXML
+    private Label invalidLabel;
     @FXML
     private TableColumn<menu, String> C1;
     @FXML
@@ -62,6 +65,7 @@ public class MenuPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        invalidLabel.setText("");
         C1.setCellValueFactory(new PropertyValueFactory<menu, String>("food_item"));
         C2.setCellValueFactory(new PropertyValueFactory<menu, Float>("cuisine_id"));
 
@@ -150,7 +154,7 @@ public class MenuPageController implements Initializable {
             Scene scene = new Scene(root,513, 544);
             insertMenuController abc = loader.getController();
             Stage window= new Stage();
-            window.setTitle("Mneu page");
+            window.setTitle("Menu page");
             window.setScene(scene);
             window.setResizable(false);
             window.show();
@@ -161,6 +165,33 @@ public class MenuPageController implements Initializable {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
         }
+    }
+
+    @FXML
+    public void delcol(ActionEvent actionEvent)
+    {
+        try {
+            Connection connection = DatabaseConnector.getConnnection();
+            connection.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+            menu m1 = menuTable.getSelectionModel().getSelectedItem();
+            prep_stmt=connection.prepareStatement("delete from Menu where Food_Item=?");
+            prep_stmt.setString(1, m1.getFood_item());
+            prep_stmt.executeUpdate();
+            connection.commit();
+            connection.close();
+            invalidLabel.setText("Deletion successful");
+            invalidLabel.setTextFill(Color.GREEN);
+
+        }
+
+        catch(Exception e){
+            e.printStackTrace();
+
+    }
+
+
+
     }
 
 }

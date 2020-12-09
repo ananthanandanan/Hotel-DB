@@ -18,7 +18,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import structure.Branch;
 import structure.Hotel;
 import structure.chef;
 
@@ -31,6 +33,10 @@ import java.util.ResourceBundle;
 
 public class ChefsPageController implements Initializable {
 
+    @FXML
+    private Label invalidLabel;
+    @FXML
+    private TableView<Branch> branchTable;
     @FXML
     public TableView<chef> chefsTable;
     @FXML
@@ -173,4 +179,44 @@ public class ChefsPageController implements Initializable {
         }
     }
 
-}
+    @FXML
+    public void delcol(ActionEvent actionevent)
+    {
+        try
+        {
+            Connection connection = DatabaseConnector.getConnnection();
+            connection.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+
+            chef d1 =chefsTable.getSelectionModel().getSelectedItem();
+            prep_stmt=connection.prepareStatement("Select * from  Branch where SSN=?");
+            prep_stmt.setString(1,d1.getSSN());
+            re=prep_stmt.executeQuery();
+
+            if(re.next())
+            {
+                invalidLabel.setText("Data in Branch Table!");
+                invalidLabel.setTextFill(Color.RED);
+            }
+
+            else{
+                prep_stmt=connection.prepareStatement("Delete from chefs where SSN=?");
+                prep_stmt.setString(1,d1.getSSN());
+                int i = prep_stmt.executeUpdate();
+                connection.commit();
+                System.out.println(i+" records affected");
+                connection.close();
+                invalidLabel.setText("Deletion successful!");
+                invalidLabel.setTextFill(Color.GREEN);
+            }
+            re.close();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        }
+
+    }
+
+

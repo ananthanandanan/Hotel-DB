@@ -274,9 +274,12 @@ public class HotelPageController implements Initializable {
                 connection.commit();
                 System.out.println(i+" records affected");
                 connection.close();
+                invalidLabel.setText("Deletion successful!");
+                invalidLabel.setTextFill(Color.GREEN);
             }
             re.close();
-        }catch (Exception e){
+        }
+        catch (Exception e){
             e.printStackTrace();
         }
 

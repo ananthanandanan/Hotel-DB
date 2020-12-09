@@ -25,7 +25,7 @@ create table Branch(
 	SSN varchar(50)references chefs(SSN)
 );
 create table Menu(
-	Food_Item  varchar(100),
+	Food_Item  varchar(100) primary key,
 	Cuisine_id varchar(100) references Cuisine(Cuisine_id));
 
 create table Employee(
