@@ -1,17 +1,24 @@
 package EmployeePage;
 
+import ChefsPage.addChefsController;
+import ChefsPage.insertChefsController;
+import Transports.Paths;
 import database.DatabaseConnector;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import structure.chef;
 import structure.employee;
 
@@ -114,5 +121,52 @@ public class EmployeePageController implements Initializable {
         new dashboard.dashboardController().gotToHome(actionEvent);
     }
     @FXML
-    public void gotoLogin(MouseEvent actionEvent){new dashboard.dashboardController().gotoLogin(actionEvent);}
+    public void gotoLogin(MouseEvent actionEvent){
+        new dashboard.dashboardController().gotoLogin(actionEvent);
+    }
+
+    public void Editcol(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader ();
+            loader.setLocation(getClass().getResource(Paths.EDITEMPLOYEEVIEW));
+            Parent root = loader.load();
+            Scene scene = new Scene(root,513, 544);
+            addEmployeeController abc = loader.getController();
+            abc.setTextField(employeeTable.getSelectionModel().getSelectedItem());
+
+            Stage window= new Stage();
+            window.setTitle("employee page");
+            window.setScene(scene);
+            window.setResizable(false);
+            window.show();
+            root.requestFocus();
+        }
+        catch (Exception ex) {
+            System.out.println("Error load Checkin FXML !");
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+        }
+    }
+
+    public void Adddata(ActionEvent actionEvent) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader ();
+            loader.setLocation(getClass().getResource(Paths.INSERTEMPLOYEEVIEW));
+            Parent root = loader.load();
+            Scene scene = new Scene(root,513, 544);
+            insertEmployeeController abc = loader.getController();
+            Stage window= new Stage();
+            window.setTitle("employee page");
+            window.setScene(scene);
+            window.setResizable(false);
+            window.show();
+            root.requestFocus();
+        }
+        catch (Exception ex) {
+            System.out.println("Error load Checkin FXML !");
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+        }
+    }
 }

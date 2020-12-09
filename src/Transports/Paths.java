@@ -12,6 +12,8 @@ public class Paths {
     public static String INSERTBRANCHVIEW = "/BranchPage/insertBranch.fxml";
     public static String INSERTCHEFSVIEW = "/ChefsPage/insertChefs.fxml";
     public static String EDITCHEFSVIEW = "/ChefsPage/addChefs.fxml";
+    public static String INSERTEMPLOYEEVIEW = "/EmployeePage/insertEmployee.fxml";
+    public static String EDITEMPLOYEEVIEW = "/EmployeePage/addEmpoyee.fxml";
 
 
 
