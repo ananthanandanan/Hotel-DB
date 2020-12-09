@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import structure.Hotel;
 import java.net.URL;
@@ -26,6 +27,8 @@ import java.util.ResourceBundle;
 import  database.DatabaseConnector;
 
 public class HotelPageController implements Initializable {
+    @FXML
+    private Label invalidLabel;
     @FXML
     private TableView<Hotel> hotelTable;
     @FXML
@@ -61,6 +64,7 @@ public class HotelPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        invalidLabel.setText("");
 
         C1.setCellValueFactory(new PropertyValueFactory<Hotel, String>("hotel_name"));
         C2.setCellValueFactory(new PropertyValueFactory<Hotel, Float>("revenue_planned"));
@@ -245,6 +249,37 @@ public class HotelPageController implements Initializable {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
         }
+    }
+    @FXML
+    private void Deldata(ActionEvent actionEvent){
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection connection = DatabaseConnector.getConnnection();
+            connection.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+            Hotel hotel=hotelTable.getSelectionModel().getSelectedItem();
+            prep_stmt=connection.prepareStatement("Select * from Branch where Hotel_name=?");
+            prep_stmt.setString(1,hotel.getHotel_name());
+            re=prep_stmt.executeQuery();
+
+
+            if(re.next()){
+                invalidLabel.setText("Data in Branch Table!");
+                invalidLabel.setTextFill(Color.RED);
+            }
+            else{
+                prep_stmt=connection.prepareStatement("Delete from Hotel where Hotel_name=?");
+                prep_stmt.setString(1,hotel.getHotel_name());
+                int i = prep_stmt.executeUpdate();
+                connection.commit();
+                System.out.println(i+" records affected");
+                connection.close();
+            }
+            re.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
 }
