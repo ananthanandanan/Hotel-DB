@@ -20,6 +20,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import structure.Hotel;
 import structure.chef;
 import structure.employee;
 
@@ -65,6 +66,7 @@ public class EmployeePageController implements Initializable {
     private ImageView logmini;
     private PreparedStatement prep_stmt = null;
     private ResultSet re = null;
+    ObservableList<employee> employeelist = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -74,7 +76,6 @@ public class EmployeePageController implements Initializable {
         C3.setCellValueFactory(new PropertyValueFactory<employee, String>("doj"));
         C4.setCellValueFactory(new PropertyValueFactory<employee, String>("designation"));
 
-        ObservableList<employee> employeelist = FXCollections.observableArrayList();
 
         try {
             Connection connection = DatabaseConnector.getConnnection();
@@ -97,8 +98,34 @@ public class EmployeePageController implements Initializable {
 
 
         employeeTable.setItems(employeelist);
-        employeeTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
+
+    }
+    @FXML
+    private void EmployeerefreshTable(ActionEvent actionEvent){
+
+        try {
+            employeelist.clear();
+            Connection connection = DatabaseConnector.getConnnection();
+            connection.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+            //get the data from db
+            prep_stmt = connection.prepareStatement("SELECT * FROM Employee");
+            re = prep_stmt.executeQuery();
+            while (re.next()){
+                employeelist.add(new employee(re.getString("SSID"), re.getString("ename"), re.getString("DOJ"),
+                        re.getString("designation")));
+            }
+            re.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
+        employeeTable.setItems(employeelist);
 
     }
     @FXML

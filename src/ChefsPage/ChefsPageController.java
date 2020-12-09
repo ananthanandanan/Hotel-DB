@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import structure.Branch;
 import structure.Hotel;
 import structure.chef;
+import structure.menu;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -69,6 +70,7 @@ public class ChefsPageController implements Initializable {
     private ImageView logmini;
     private PreparedStatement prep_stmt = null;
     private ResultSet re = null;
+    ObservableList<chef> chefslist = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -78,8 +80,6 @@ public class ChefsPageController implements Initializable {
         C3.setCellValueFactory(new PropertyValueFactory<chef, String>("name"));
         C4.setCellValueFactory(new PropertyValueFactory<chef, String>("doj"));
 
-
-        ObservableList<chef> chefslist = FXCollections.observableArrayList();
 
         try {
             Connection connection = DatabaseConnector.getConnnection();
@@ -133,6 +133,35 @@ public class ChefsPageController implements Initializable {
     public void gotoLogin(MouseEvent actionEvent) {
         new dashboard.dashboardController().gotoLogin(actionEvent);
     }
+
+    @FXML
+    private void ChefsrefreshTable(ActionEvent actionEvent){
+
+        try {
+            chefslist.clear();
+            Connection connection = DatabaseConnector.getConnnection();
+            connection.setAutoCommit(false);
+            System.out.println("Opened database successfully");
+            //get the data from db
+            prep_stmt = connection.prepareStatement("SELECT * FROM chefs");
+            re = prep_stmt.executeQuery();
+            while (re.next()){
+                chefslist.add(new chef(re.getString("SSN"), re.getString("Chef_name"), re.getString("DOJ"),
+                        re.getString("Cuisine_id")));
+            }
+            re.close();
+            connection.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
+        chefsTable.setItems(chefslist);
+
+    }
+
 
     public void Editcol(ActionEvent actionEvent) {
         try {
