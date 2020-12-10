@@ -37,7 +37,7 @@ Hotel-DB/
 
 ```
 
-##Screenshots
+## Screenshots
 
 <table>
      <tr>
