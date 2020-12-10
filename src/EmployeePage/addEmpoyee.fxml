@@ -11,7 +11,7 @@
     <children>
         <Pane layoutX="137.0" layoutY="21.0" prefHeight="65.0" prefWidth="240.0" style="-fx-background-color: #80CFD5; -fx-border-color: white; -fx-border-width: 2px;">
             <children>
-                <Label layoutX="63.0" layoutY="15.0" prefHeight="36.0" prefWidth="144.0" text="Edit Empoyee" textFill="WHITE">
+                <Label layoutX="63.0" layoutY="15.0" prefHeight="36.0" prefWidth="144.0" text="Edit Employee" textFill="WHITE">
                     <font>
                         <Font name="Chilanka Regular" size="20.0" />
                     </font>
